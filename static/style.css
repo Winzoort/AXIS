@@ -552,6 +552,7 @@ a {
 }
 
 /* Opciones de contacto */
+/* Opciones de contacto */
 .contact-options {
     display: flex;
     flex-direction: column;
@@ -560,13 +561,9 @@ a {
 
 .contact-options a,
 .contact-options button {
-    .contact-options button {
-    width: 100%;
-    font-family: inherit;
-    font-size: inherit;
-    cursor: pointer;
-}
     display: block;
+    width: 100%;
+    box-sizing: border-box;
     padding: 15px;
 
     background: #21152F;
@@ -575,8 +572,12 @@ a {
 
     color: #F5F2FA;
     text-decoration: none;
+    font-family: inherit;
+    font-size: inherit;
     font-weight: 600;
+    text-align: center;
 
+    cursor: pointer;
     transition: 0.2s ease;
 }
 
