@@ -1,0 +1,479 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <!-- CONFIGURACIÓN GENERAL DE LA PÁGINA -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AXIS | Design & Solutions</title>
+
+    <!-- CONEXIÓN CON EL ARCHIVO CSS -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <!-- ===================================== -->
+    <!-- 1. BARRA DE NAVEGACIÓN -->
+    <!-- ===================================== -->
+
+    <header class="navbar">
+
+        <!-- LOGOTIPO -->
+
+        <a href="#home" class="logo">
+            AXIS <span class="logo-highlight">Solutions.</span>
+        </a>
+
+        <!-- ENLACES DEL MENÚ -->
+
+        <nav id="navMenu">
+
+            <a href="#home">Home</a>
+            <a href="#service">Service</a>
+            <a href="#portfolio">Portfolio</a>
+            <a href="#about-me">About Me</a>
+            <a href="#contact">Contact</a>
+
+        </nav>
+
+        <!-- BOTÓN DE CONTACTO DEL MENÚ -->
+
+        <a href="#contact" class="nav-button">
+            Let's Talk ↗
+        </a>
+
+        <!-- MENÚ PARA CELULARES -->
+
+        <button id="menuToggle" class="menu-toggle">
+            ☰
+        </button>
+
+    </header>
+
+
+    <main>
+
+        <!-- ===================================== -->
+        <!-- 2. PORTADA PRINCIPAL -->
+        <!-- ===================================== -->
+
+        <section class="hero" id="home">
+
+            <!-- TEXTO PRINCIPAL -->
+
+            <div class="hero-content">
+
+                <span class="section-label">
+                    WEB DESIGN & DEVELOPMENT
+                </span>
+
+                <h1>
+                    Your ideas deserve
+                    <span>a great website.</span>
+                </h1>
+
+                <p>
+                    I create modern, attractive, and functional websites
+                    for entrepreneurs, businesses, and projects that want
+                    to stand out on the internet.
+                </p>
+
+                <!-- BOTONES PRINCIPALES -->
+
+                <div class="hero-buttons">
+
+                    <a href="#portfolio" class="button-primary">
+                        View My Projects ↗
+                    </a>
+
+                    <a href="#contact" class="button-secondary">
+                        Request a Website
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- ELEMENTO DECORATIVO DE LA PORTADA -->
+
+            <div class="hero-decoration">
+
+                <div class="pixel-card">
+
+                    <span>Ideas that connect</span>
+
+                    <img src="{{ url_for('static', filename='imagenes/first.png') }}"
+                    alt="Logo de AXIS"
+                    class="cube">
+
+                    <span>WEB DESIGN · CREATIVITY · DEVELOPMENT</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ===================================== -->
+        <!-- 3. FRANJA INFORMATIVA -->
+        <!-- ===================================== -->
+
+        <section class="info-strip">
+
+            <span>MODERN DESIGN</span>
+            <span>DIGITAL EXPERIENCES</span>
+            <span>PERSONALIZED ATTENTION</span>
+
+        </section>
+
+
+        <!-- ===================================== -->
+        <!-- 4. SERVICIOS QUE OFREZCO -->
+        <!-- ===================================== -->
+
+        <section class="section" id="service">
+
+            <span class="section-label">
+                MY SERVICES
+            </span>
+
+            <h2>
+                Digital Solutions
+                <span>for Your Ideas.</span>
+            </h2>
+
+            <!-- TARJETAS DE SERVICIOS -->
+
+            <div class="mode-grid">
+
+                <!-- SERVICIO 1 -->
+
+                <article class="mode-card">
+
+                    <span class="mode-number">01</span>
+
+                    <h3>Web Pages</h3>
+
+                    <p>
+                        Modern websites to showcase your business,
+                        brand or project on the internet.
+                    </p>
+
+                </article>
+
+                <!-- SERVICIO 2 -->
+
+                <article class="mode-card">
+
+                    <span class="mode-number">02</span>
+
+                    <h3>Online Stores</h3>
+
+                    <p>
+                        Digital spaces to showcase your products
+                        and connect with your customers.
+                    </p>
+
+                </article>
+
+                <!-- SERVICIO 3 -->
+
+                <article class="mode-card">
+
+                    <span class="mode-number">03</span>
+
+                    <h3>Landing pages</h3>
+
+                    <p>
+                        Pages focused on presenting services,
+                        promoting products and acquiring contacts.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- ===================================== -->
+        <!-- 5. GALERÍA DE PROYECTOS -->
+        <!-- ===================================== -->
+
+        <section class="section" id="portfolio">
+
+            <span class="section-label">
+                MY PORTFOLIO
+            </span>
+
+            <h2>
+                Some of my
+                <span>projects.</span>
+            </h2>
+
+            <p class="projects-description">
+                Each project is an opportunity to transform
+                ideas into digital experiences.
+            </p>
+
+            <!-- CONTENEDOR DE PROYECTOS -->
+
+            <div class="projects-grid">
+
+                <!-- PROYECTO 1 -->
+
+                <article class="project-card">
+
+                    <div class="project-image project-one">
+
+                        <span>PROJECT 01</span>
+
+                        <h3>Your Next Website</h3>
+
+                    </div>
+
+                    <div class="project-info">
+
+                        <div>
+                            <h3>Corporate Project</h3>
+                            <p>Web Design · Corporate Page</p>
+                        </div>
+
+                        <span class="project-arrow">↗</span>
+
+                    </div>
+
+                </article>
+
+                <!-- PROYECTO 2 -->
+
+                <article class="project-card">
+
+                    <div class="project-image project-two">
+
+                        <span>PROJECT 02</span>
+
+                        <h3>Your Digital Brand</h3>
+
+                    </div>
+
+                    <div class="project-info">
+
+                        <div>
+                            <h3>Landing Page</h3>
+                            <p>Web Design · Service Presentation</p>
+                        </div>
+
+                        <span class="project-arrow">↗</span>
+
+                    </div>
+
+                </article>
+
+                <!-- PROYECTO 3 -->
+
+                <article class="project-card">
+
+                    <div class="project-image project-three">
+
+                        <span>PROJECT 03</span>
+
+                        <h3>Your Online Store</h3>
+
+                    </div>
+
+                    <div class="project-info">
+
+                        <div>
+                            <h3>Online Store</h3>
+                            <p>Web Design · E-commerce</p>
+                        </div>
+
+                        <span class="project-arrow">↗</span>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+            <!-- AVISO SOBRE LOS PROYECTOS DEMOSTRATIVOS -->
+
+            <p class="disclaimer">
+                Some spaces are illustrative and will be replaced
+                by real projects as my portfolio advances.
+            </p>
+
+        </section>
+
+
+        <!-- ===================================== -->
+        <!-- 6. PRESENTACIÓN PERSONAL -->
+        <!-- ===================================== -->
+
+        <section class="section about-section" id="about-me">
+
+            <span class="section-label">
+                ABOUT ME
+            </span>
+
+            <h2>
+                Behind every idea
+                <span>is a person.</span>
+            </h2>
+
+            <p>
+                I am the creator of AXIS. I am interested in design,
+                technology, and the development of digital solutions.
+                My goal is to help people and businesses have a presence
+                on the internet through websites.
+            </p>
+
+        </section>
+
+
+        <!-- ===================================== -->
+        <!-- 7. CONTACTO -->
+        <!-- ===================================== -->
+
+        <section class="community-section" id="contact">
+
+            <div>
+
+                <span class="section-label">
+                    LET'S TALK
+                </span>
+
+                <h2>
+                    Do you have an idea?
+                    <span>Let's make it a reality.</span>
+                </h2>
+
+                <p>
+                    Tell me what you need and let's discuss
+                    how we can create your next web page.
+                </p>
+
+                <!-- BOTÓN DE CONTACTO -->
+                <button type="button" id="discordButton" class="button-primary">
+                    Contact Me ↗
+                </button>
+
+            </div>
+
+            <!-- ELEMENTO DECORATIVO -->
+
+            <div class="community-mark">
+                W<span>.</span>
+            </div>
+
+        </section>
+
+        <!-- ========================= -->
+<!-- VENTANA DE CONTACTO -->
+<!-- ========================= -->
+
+<div class="contact-modal" id="contactModal">
+
+    <div class="contact-modal-content">
+
+        <button class="modal-close" id="closeModal">
+            &times;
+        </button>
+
+        <span class="section-label">WRITE TO US</span>
+
+        <h2>How would you like to contact me?</h2>
+
+        <p>Choose the method that suits you best.</p>
+
+        <div class="contact-options">
+
+            <a href="https://www.instagram.com/compra.mix.plc/"
+               target="_blank"
+               rel="noopener noreferrer">
+                Instagram ↗
+            </a>
+
+            <a href="#" id="whatsappLink">
+                WhatsApp ↗
+            </a>
+
+            <button type="button" id="emailButton">Email</button>
+            
+
+        </div>
+
+    </div>
+
+</div>
+
+    </main>
+
+
+    <!-- ===================================== -->
+    <!-- 8. PIE DE PÁGINA -->
+    <!-- ===================================== -->
+
+    <footer class="footer">
+
+        <a href="#home" class="logo">
+            AXIS<span>.</span>
+        </a>
+
+        <p>
+            © <span id="year"></span> AXIS.
+            All rights reserved.
+        </p>
+
+        <a href="#home">
+            Back to top ↑
+        </a>
+
+    </footer>
+
+
+    <!-- ===================================== -->
+    <!-- 9. CONEXIÓN CON JAVASCRIPT -->
+    <!-- ===================================== -->
+
+<!-- VENTANA EMERGENTE DEL CORREO -->
+<div class="email-modal" id="emailModal">
+
+    <div class="email-modal-content">
+
+        <!-- BOTÓN PARA CERRAR -->
+        <button class="email-close" id="closeEmailModal">&times;</button>
+
+        <h2>Contact by email</h2>
+
+        <p>You can copy our email address below.</p>
+
+        <!-- CORREO DE AXIS -->
+        <div class="email-address">
+            <span id="emailText">l.obreque.contact@gmail.com</span>
+        </div>
+
+        <!-- BOTÓN PARA COPIAR -->
+        <button class="copy-email" id="copyEmail">
+            Copy email
+        </button>
+
+        <p id="copyMessage"></p>
+
+    </div>
+
+</div>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
