@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXIS | Invitación inválida</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+
+    <main class="login-container">
+        <div class="login-card">
+
+            <div class="brand">AXIS<span>.</span></div>
+
+            <p class="subtitle">ACCESO NO DISPONIBLE</p>
+
+            <h1>Invitación inválida</h1>
+
+            <p class="description">
+                Este enlace no existe o ya fue utilizado.
+                Si crees que se trata de un error, contacta con AXIS.
+            </p>
+
+            <a href="{{ url_for('inicio') }}" class="back-link">
+                Volver a AXIS
+            </a>
+
+        </div>
+    </main>
+
+</body>
+</html>

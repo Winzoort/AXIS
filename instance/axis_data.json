@@ -1,0 +1,24 @@
+{
+    "invitations": {
+        "801b806104c086b7ca719d1a593c8a1f42008ad23df608a44a372e66a414c651": {
+            "used": false
+        },
+        "96babd565d0e022903c5580ef9d4f12d8fba5a27405fa2390b81ed756eb90e86": {
+            "used": false
+        },
+        "bdc67a4d5e5bd7c3058c3e3b8b524eeae575fee025a0f19701bfc35ed3186d21": {
+            "used": true
+        },
+        "cc9b7b1db63028a73926f011ac7ab8d86ca479c6d5aac9f5f5fdbd1af0a6ea9e": {
+            "used": false
+        },
+        "eca77219df7c297aeeb1c52da221f97a07286360e27dfe6e760daec92b62ae83": {
+            "used": true
+        },
+        "65ea72c5c627732138159a04a17814169a3d617c4f78d6e0a7fad659953386e3": {
+            "used": false
+        }
+    },
+    "reviews": [],
+    "christmas_mode": true
+}

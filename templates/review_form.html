@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXIS | Dejar una reseña</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+
+    <main class="login-container">
+        <div class="login-card">
+
+            <div class="brand">AXIS<span>.</span></div>
+
+            <p class="subtitle">TU OPINIÓN NOS IMPORTA</p>
+            <h1>Deja tu reseña</h1>
+
+            <p class="description">
+                Cuéntanos cómo fue tu experiencia trabajando con AXIS.
+            </p>
+
+            {% with messages = get_flashed_messages() %}
+                {% for message in messages %}
+                    <div class="alert">{{ message }}</div>
+                {% endfor %}
+            {% endwith %}
+
+            <form method="POST">
+
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+                <label for="username">Tu nombre</label>
+                <input type="text" id="username" name="username"
+                       maxlength="60" required>
+
+                <label for="email">Tu correo electrónico</label>
+                <input type="email" id="email" name="email"
+                       maxlength="254" required>
+
+                <label for="rating">Calificación</label>
+                <select id="rating" name="rating" required>
+                    <option value="">Selecciona una calificación</option>
+                    <option value="5">★★★★★ - Excelente</option>
+                    <option value="4">★★★★ - Muy bueno</option>
+                    <option value="3">★★★ - Bueno</option>
+                    <option value="2">★★ - Regular</option>
+                    <option value="1">★ - Malo</option>
+                </select>
+
+                <label for="comment">Tu experiencia</label>
+                <textarea id="comment" name="comment"
+                          maxlength="1000" rows="5" required></textarea>
+
+                <button type="submit">Enviar reseña</button>
+
+            </form>
+
+            <a href="{{ url_for('inicio') }}" class="back-link">
+                Volver a AXIS
+            </a>
+
+        </div>
+    </main>
+
+</body>
+</html>

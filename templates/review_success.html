@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXIS | Reseña enviada</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+
+    <main class="login-container">
+        <div class="login-card">
+
+            <div class="brand">AXIS<span>.</span></div>
+
+            <p class="subtitle">¡GRACIAS POR PARTICIPAR!</p>
+
+            <h1>Reseña recibida</h1>
+
+            <p class="description">
+                Tu opinión ha sido enviada correctamente.
+                Nuestro equipo la revisará antes de publicarla
+                en la página de AXIS.
+            </p>
+
+            <a href="{{ url_for('inicio') }}" class="primary-button"
+               style="display:block;text-align:center;text-decoration:none;">
+                Volver a AXIS
+            </a>
+
+        </div>
+    </main>
+
+</body>
+</html>

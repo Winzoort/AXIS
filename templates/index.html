@@ -19,7 +19,7 @@
 
 </head>
 
-<body>
+<body class="{% if christmas_mode %}christmas-mode{% endif %}">
 
     <!-- ===================================== -->
     <!-- 1. BARRA DE NAVEGACIÓN -->
@@ -59,6 +59,56 @@
 
     </header>
 
+<!-- ===================================== -->
+<!-- 9. RESEÑAS DE CLIENTES -->
+<!-- ===================================== -->
+
+{% if reviews %}
+
+<section class="section reviews-section" id="reviews">
+
+    <span class="section-label">CLIENT EXPERIENCES</span>
+
+    <h2>
+        What people
+        <span>say about AXIS.</span>
+    </h2>
+
+    <p class="projects-description">
+        Real experiences from people who trusted our work.
+    </p>
+
+    <div class="reviews-grid">
+
+        {% for review in reviews|reverse %}
+
+        <article class="review-public-card">
+
+            <div class="review-stars">
+                {% for star in range(review.rating) %}★{% endfor %}
+                {% for star in range(5 - review.rating) %}☆{% endfor %}
+            </div>
+
+            <p class="review-public-comment">
+                "{{ review.comment }}"
+            </p>
+
+            <div class="review-public-author">
+                <strong>{{ review.username }}</strong>
+                <span>Verified experience</span>
+            </div>
+
+        </article>
+
+        {% endfor %}
+
+    </div>
+
+
+
+</section>
+
+{% endif %}
 
     <main>
 
@@ -105,7 +155,7 @@
 
             <!-- ELEMENTO DECORATIVO DE LA PORTADA -->
 
-            <div class="hero-decoration">
+                        <div class="hero-decoration">
 
                 <div class="pixel-card">
 
@@ -118,6 +168,33 @@
                     <span>WEB DESIGN · CREATIVITY · DEVELOPMENT</span>
 
                 </div>
+
+            </div>
+
+            <!-- ===================================== -->
+            <!-- ÁRBOL NAVIDEÑO AXIS -->
+            <!-- ===================================== -->
+
+            <div class="christmas-tree" aria-hidden="true">
+
+                <div class="tree-star">★</div>
+
+                <span class="tree-ball ball-red ball-1"></span>
+                <span class="tree-ball ball-red ball-4"></span>
+                <span class="tree-ball ball-red ball-6"></span>
+
+                <span class="tree-ball ball-gold ball-2"></span>
+                <span class="tree-ball ball-gold ball-5"></span>
+
+                <span class="tree-ball ball-white ball-3"></span>
+                <span class="tree-ball ball-white ball-7"></span>
+
+                <span class="tree-light light-1"></span>
+                <span class="tree-light light-2"></span>
+                <span class="tree-light light-3"></span>
+                <span class="tree-light light-4"></span>
+                <span class="tree-light light-5"></span>
+                <span class="tree-light light-6"></span>
 
             </div>
 

@@ -1,0 +1,226 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXIS | Panel administrativo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin.css') }}">
+</head>
+<body>
+
+<header class="admin-header">
+    <a href="{{ url_for('admin_panel') }}" class="brand">AXIS<span>.</span></a>
+
+    <form action="{{ url_for('admin_logout') }}" method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <button class="logout-button">Cerrar sesión</button>
+    </form>
+</header>
+
+<main class="dashboard">
+
+    <div class="welcome">
+        <p class="subtitle">ADMINISTRACIÓN PRIVADA</p>
+        <h1>Panel de control</h1>
+        <p>Gestiona las funciones principales de AXIS.</p>
+    </div>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <!-- ESTADÍSTICAS -->
+    <section class="stats">
+
+        <article class="stat-card">
+            <span>Reseñas recibidas</span>
+            <strong>{{ reviews|length }}</strong>
+        </article>
+
+        <article class="stat-card">
+            <span>Pendientes de revisión</span>
+            <strong>{{ reviews|selectattr('status', 'equalto', 'pending')|list|length }}</strong>
+        </article>
+
+        <article class="stat-card">
+            <span>Invitaciones creadas</span>
+            <strong>{{ invitations|length }}</strong>
+        </article>
+
+    </section>
+
+    <!-- INVITACIONES -->
+    <section class="admin-section">
+
+        <div class="section-heading">
+            <div>
+                <p class="subtitle">ACCESO EXCLUSIVO</p>
+                <h2>Invitaciones</h2>
+            </div>
+        </div>
+
+        <p>
+            Genera enlaces únicos para que otras personas puedan dejar
+            una reseña en AXIS.
+        </p>
+
+        <form action="{{ url_for('create_invitation') }}" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+            <button class="primary-button" type="submit">
+                + Crear invitación
+            </button>
+        </form>
+
+        {% if invitation_url %}
+            <div class="invitation-result">
+                <strong>¡Invitación creada!</strong>
+                <p>Comparte este enlace con la persona invitada:</p>
+
+                <input
+                    type="text"
+                    value="{{ invitation_url }}"
+                    readonly
+                    onclick="this.select()"
+                >
+
+                <a href="{{ invitation_url }}" target="_blank" rel="noopener">
+                    Abrir invitación
+                </a>
+            </div>
+        {% endif %}
+
+        <div class="invitation-summary">
+            {% set used_count = invitations.values()|selectattr('used')|list|length %}
+            <span>Utilizadas: {{ used_count }}</span>
+            <span>Disponibles: {{ invitations|length - used_count }}</span>
+        </div>
+
+    </section>
+
+    <!-- RESEÑAS -->
+    <section class="admin-section">
+
+        <div class="section-heading">
+            <div>
+                <p class="subtitle">OPINIONES DE CLIENTES</p>
+                <h2>Reseñas</h2>
+            </div>
+        </div>
+
+        {% if reviews %}
+
+            {% for review in reviews|reverse %}
+
+                <article class="review-card">
+
+                    <div class="review-top">
+                        <div>
+                            <h3>{{ review.username }}</h3>
+                            <p>{{ review.email }}</p>
+                        </div>
+
+                        <span class="status {{ review.status }}">
+                            {% if review.status == 'approved' %}
+                                Aprobada
+                            {% elif review.status == 'rejected' %}
+                                Rechazada
+                            {% else %}
+                                Pendiente
+                            {% endif %}
+                        </span>
+                    </div>
+
+                    <div class="stars">
+                        {% for star in range(review.rating) %}★{% endfor %}
+                        {% for star in range(5 - review.rating) %}☆{% endfor %}
+                    </div>
+
+                    <p class="review-comment">{{ review.comment }}</p>
+
+                    <div class="review-actions">
+
+                        {% if review.status != 'approved' %}
+                            <form method="POST"
+                                  action="{{ url_for('manage_review', review_id=review.id, action='approve') }}">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <button class="approve-button">Aprobar</button>
+                            </form>
+                        {% endif %}
+
+                        {% if review.status != 'rejected' %}
+                            <form method="POST"
+                                  action="{{ url_for('manage_review', review_id=review.id, action='reject') }}">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <button class="reject-button">Rechazar</button>
+                            </form>
+                        {% endif %}
+
+                        <form method="POST"
+                              action="{{ url_for('manage_review', review_id=review.id, action='delete') }}"
+                              onsubmit="return confirm('¿Seguro que quieres eliminar esta reseña?');">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            <button class="delete-button">Eliminar</button>
+                        </form>
+
+                    </div>
+
+                </article>
+
+            {% endfor %}
+
+        {% else %}
+            <p class="empty-message">
+                Todavía no has recibido reseñas.
+            </p>
+        {% endif %}
+
+    </section>
+
+    <!-- MODO NAVIDAD -->
+    <section class="admin-section christmas-section">
+
+        <div>
+            <p class="subtitle">PERSONALIZACIÓN GLOBAL</p>
+            <h2>Modo Navidad</h2>
+            <p>
+                Activa o desactiva la decoración navideña para todos
+                los visitantes de AXIS.
+            </p>
+        </div>
+
+        <div class="christmas-status">
+            {% if christmas_mode %}
+                <span class="status approved">Activado</span>
+            {% else %}
+                <span class="status pending">Desactivado</span>
+            {% endif %}
+        </div>
+
+        <form action="{{ url_for('toggle_christmas') }}" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+            <button class="primary-button" type="submit">
+                {% if christmas_mode %}
+                    Desactivar Modo Navidad
+                {% else %}
+                    Activar Modo Navidad
+                {% endif %}
+            </button>
+        </form>
+
+    </section>
+
+    <footer>
+        AXIS Administration · {{ 2026 }}
+    </footer>
+
+</main>
+
+</body>
+</html>
+```
